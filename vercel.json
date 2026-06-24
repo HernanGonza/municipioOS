@@ -4,9 +4,7 @@
   "outputDirectory": ".output",
   "framework": "other",
   "env": {
-    "NITRO_PRESET": {
-      "value": "vercel"
-    }
+    "NITRO_PRESET": "vercel"
   },
   "rewrites": [
     {
