@@ -1,6 +1,46 @@
 {
-  "buildCommand": "bun run build",
+  "buildCommand": "npm run build",
+  "installCommand": "npm install",
   "outputDirectory": ".output",
-  "rewrites": [{"source": "/(.*)", "destination": "/"}],
-  "env": {"NITRO_PRESET": "vercel"}
+  "framework": "other",
+  "nodeVersion": "22.x",
+  "env": {
+    "NITRO_PRESET": {
+      "value": "vercel"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, s-maxage=3600"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
 }
