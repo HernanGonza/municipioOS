@@ -3,7 +3,6 @@
   "installCommand": "npm install",
   "outputDirectory": ".output",
   "framework": "other",
-  "nodeVersion": "22.x",
   "env": {
     "NITRO_PRESET": {
       "value": "vercel"
