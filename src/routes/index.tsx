@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import {
   ArrowRight,
   Blocks,
@@ -16,10 +17,6 @@ import {
   Globe,
   Sparkles,
   GraduationCap,
-  CalendarCheck,
-  Download,
-  Mail,
-  Phone,
   CheckCircle2,
 } from "lucide-react";
 import heroImage from "@/assets/hero-modular.jpg";
@@ -128,6 +125,8 @@ const addons = [
 ];
 
 function Index() {
+  const [selectedModule, setSelectedModule] = useState<string | null>(null);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* NAV */}
@@ -145,15 +144,7 @@ function Index() {
             <a href="#plataforma" className="hover:text-foreground">Plataforma</a>
             <a href="#modulos" className="hover:text-foreground">Módulos</a>
             <a href="#servicios" className="hover:text-foreground">Servicios</a>
-            <a href="#contacto" className="hover:text-foreground">Contacto</a>
           </nav>
-          <a
-            href="#contacto"
-            className="hidden items-center gap-1.5 rounded-full bg-foreground px-4 py-2 text-sm font-semibold text-background transition-transform hover:scale-[1.02] sm:inline-flex"
-          >
-            Agendar demo
-            <ArrowRight className="h-3.5 w-3.5" />
-          </a>
         </div>
       </header>
 
@@ -295,7 +286,8 @@ function Index() {
             {modules.map((m) => (
               <article
                 key={m.name}
-                className={`group relative flex flex-col rounded-2xl border p-7 transition-all hover:-translate-y-1 ${
+                onClick={() => setSelectedModule(m.name)}
+                className={`group relative flex flex-col rounded-2xl border p-7 transition-all hover:-translate-y-1 cursor-pointer ${
                   m.featured
                     ? "border-transparent bg-gradient-brand text-primary-foreground shadow-glow"
                     : "border-border bg-surface shadow-card hover:shadow-card-hover"
@@ -311,16 +303,7 @@ function Index() {
                   >
                     <m.icon className="h-5 w-5" />
                   </span>
-                  <span
-                    className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold ${
-                      m.featured
-                        ? "bg-white/15 text-primary-foreground"
-                        : "bg-cyan/10 text-cyan"
-                    }`}
-                  >
-                    <span className={`h-1.5 w-1.5 rounded-full ${m.featured ? "bg-white" : "bg-cyan"}`} />
-                    {m.status}
-                  </span>
+                  
                 </div>
                 <h3 className="mt-6 font-display text-xl font-bold leading-tight">
                   {m.name}
@@ -337,6 +320,9 @@ function Index() {
                     Módulo destacado
                   </span>
                 )}
+                <p className="mt-4 text-[11px] font-semibold opacity-75">
+                  Click para más detalles →
+                </p>
               </article>
             ))}
 
@@ -354,6 +340,184 @@ function Index() {
           </div>
         </div>
       </section>
+
+      {/* MODAL DE MÓDULOS */}
+      {selectedModule && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
+          onClick={() => setSelectedModule(null)}
+        >
+          <div 
+            className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-3xl border border-border bg-surface shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="p-8">
+              {/* Header del Modal */}
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex-1">
+                  <h2 className="font-display text-3xl font-extrabold">
+                    {selectedModule}
+                  </h2>
+                </div>
+                <button
+                  onClick={() => setSelectedModule(null)}
+                  className="text-2xl font-light text-ink-soft hover:text-foreground"
+                >
+                  ✕
+                </button>
+              </div>
+
+              {/* Contenido por módulo */}
+              <div className="mt-6 space-y-4 text-sm leading-relaxed text-ink-soft">
+                {selectedModule === "Participación Ciudadana" && (
+                  <>
+                    <div className="space-y-4">
+                      <p className="font-semibold text-foreground text-base">
+                        Sistema integral de participación ciudadana para gobiernos locales
+                      </p>
+                      
+                      <div>
+                        <h3 className="font-bold text-foreground mb-2">Aplicación Móvil para Ciudadanos</h3>
+                        <ul className="space-y-2 ml-4">
+                          <li>• <strong>Reportes anónimos</strong> de situaciones urbanas: falta de luz, seguridad, calles deterioradas, cloacas rotas, espacios públicos</li>
+                          <li>• <strong>Geolocalización integrada</strong> (con opción de seleccionar barrio manualmente)</li>
+                          <li>• <strong>Categorización automática</strong> de reportes por tema y ubicación</li>
+                          <li>• <strong>Seguimiento</strong> del estado de los reportes realizados</li>
+                          <li>• <strong>Valoración</strong> de reportes por otros vecinos</li>
+                        </ul>
+                      </div>
+
+                      <div>
+                        <h3 className="font-bold text-foreground mb-2">Panel Central de Gestión</h3>
+                        <ul className="space-y-2 ml-4">
+                          <li>• <strong>Recepción centralizada</strong> de todos los reportes ciudadanos</li>
+                          <li>• <strong>Estadísticas en tiempo real</strong>: por barrio, por tema, por estado</li>
+                          <li>• <strong>Mapa de calor</strong> que muestra zonas críticas del municipio</li>
+                          <li>• <strong>Asignación de tareas</strong> a dependencias responsables</li>
+                          <li>• <strong>Seguimiento</strong> del estado de resolución</li>
+                          <li>• <strong>Trazabilidad completa</strong> de cada reporte (creación, asignación, resolución)</li>
+                        </ul>
+                      </div>
+
+                      <div>
+                        <h3 className="font-bold text-foreground mb-2">Funcionalidades Complementarias</h3>
+                        <ul className="space-y-2 ml-4">
+                          <li>• <strong>Encuestas y consultas</strong> vecinales sobre temas específicos</li>
+                          <li>• <strong>Votaciones</strong> para priorizar obras y mejoras</li>
+                          <li>• <strong>Historial de participación</strong> por barrio y tema</li>
+                          <li>• <strong>Integración total</strong> con el panel de gestión municipal</li>
+                          <li>• <strong>Reportes ejecutivos</strong> para comunicación pública</li>
+                        </ul>
+                      </div>
+
+                      <div className="mt-6 p-4 rounded-lg border border-cyan/20 bg-cyan/5">
+                        <p className="text-xs font-semibold text-cyan uppercase mb-2">Impacto esperado</p>
+                        <p>Transformación de la relación gobierno-ciudadanía mediante canales directos, transparencia en la gestión y participación activa en la mejora del municipio.</p>
+                      </div>
+                    </div>
+                  </>
+                )}
+
+                {selectedModule === "Gestión Ambiental & Sostenibilidad" && (
+                  <>
+                    <p className="font-semibold text-foreground text-base">
+                      Control ambiental integral y gestión de sostenibilidad municipal
+                    </p>
+                    <ul className="space-y-2 ml-4">
+                      <li>• Monitoreo de calidad ambiental en tiempo real</li>
+                      <li>• Gestión centralizada de residuos y reciclaje</li>
+                      <li>• Registro de proyectos ecológicos y su avance</li>
+                      <li>• Reportes de sostenibilidad (ODS, métricas ambientales)</li>
+                      <li>• Alertas automáticas por incidentes ambientales</li>
+                      <li>• Estadísticas de impacto ambiental por período</li>
+                    </ul>
+                  </>
+                )}
+
+                {selectedModule === "Licencias y Permisos" && (
+                  <>
+                    <p className="font-semibold text-foreground text-base">
+                      Digitalización completa de procesos de licencias
+                    </p>
+                    <ul className="space-y-2 ml-4">
+                      <li>• Portal ciudadano para solicitar licencias en línea</li>
+                      <li>• Seguimiento en tiempo real del estado de trámites</li>
+                      <li>• Integración con inspecciones digitales</li>
+                      <li>• Generación automática de documentos</li>
+                      <li>• Pagos en línea integrados</li>
+                      <li>• Base de datos centralizada de licencias vigentes</li>
+                    </ul>
+                  </>
+                )}
+
+                {selectedModule === "Gestión Tributaria & Tesorería" && (
+                  <>
+                    <p className="font-semibold text-foreground text-base">
+                      Control financiero y recaudación municipal
+                    </p>
+                    <ul className="space-y-2 ml-4">
+                      <li>• Catastro digital con información parcelaria actualizada</li>
+                      <li>• Recaudación de impuestos y tasas digitalizadas</li>
+                      <li>• Facturación electrónica automática</li>
+                      <li>• Portal de pagos para ciudadanos</li>
+                      <li>• Seguimiento de deudas por contribuyente</li>
+                      <li>• Reportes financieros y de tesorería</li>
+                    </ul>
+                  </>
+                )}
+
+                {selectedModule === "Servicios Públicos & Mantenimiento" && (
+                  <>
+                    <p className="font-semibold text-foreground text-base">
+                      Gestión operativa de infraestructura municipal
+                    </p>
+                    <ul className="space-y-2 ml-4">
+                      <li>• Portal ciudadano para reportar problemas (baches, luminarias, agua)</li>
+                      <li>• Seguimiento de órdenes de trabajo y mantenimiento</li>
+                      <li>• Gestión de cuadrillas y asignación de tareas</li>
+                      <li>• Historial de intervenciones por ubicación</li>
+                      <li>• Planificación de mantenimiento preventivo</li>
+                      <li>• Integración con sistema de reportes ciudadanos</li>
+                    </ul>
+                  </>
+                )}
+
+                {selectedModule === "Comunicación & Transparencia" && (
+                  <>
+                    <p className="font-semibold text-foreground text-base">
+                      Transparencia pública y comunicación municipal
+                    </p>
+                    <ul className="space-y-2 ml-4">
+                      <li>• Portal de transparencia con información pública centralizada</li>
+                      <li>• Boletín oficial digital con búsqueda integrada</li>
+                      <li>• Sistema de archivo histórico digital</li>
+                      <li>• Publicación de actas y resoluciones</li>
+                      <li>• Calendario de eventos y convocatorias públicas</li>
+                      <li>• Acceso a información mediante solicitudes formales</li>
+                    </ul>
+                  </>
+                )}
+              </div>
+
+              {/* Footer del Modal */}
+              <div className="mt-8 flex gap-3 pt-6 border-t border-border">
+                <button
+                  onClick={() => setSelectedModule(null)}
+                  className="flex-1 rounded-full border border-border bg-surface px-4 py-3 font-semibold text-foreground hover:bg-surface-2"
+                >
+                  Cerrar
+                </button>
+                <a
+                  href="mailto:hola@paralelo.tech"
+                  className="flex-1 rounded-full bg-gradient-brand px-4 py-3 font-semibold text-primary-foreground hover:scale-[1.02] transition-transform text-center"
+                >
+                  Consultar
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* SERVICIOS COMPLEMENTARIOS */}
       <section id="servicios" className="border-t border-border bg-surface py-24">
@@ -387,7 +551,7 @@ function Index() {
                 <h3 className="mt-5 font-display text-xl font-bold">{a.name}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink-soft">{a.desc}</p>
                 <a
-                  href="#contacto"
+                  href="mailto:hola@paralelo.tech"
                   className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-foreground transition-transform group-hover:translate-x-0.5"
                 >
                   {a.cta}
@@ -395,49 +559,6 @@ function Index() {
                 </a>
               </article>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FINAL CTA */}
-      <section id="contacto" className="relative overflow-hidden border-t border-border bg-gradient-hero py-24">
-        <div className="mx-auto max-w-5xl px-6 text-center">
-          <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-xs font-semibold text-ink-soft shadow-sm">
-            <span className="h-1.5 w-1.5 rounded-full bg-cyan" />
-            Propuesta personalizada en 48hs
-          </div>
-          <h2 className="mt-6 font-display text-4xl font-extrabold leading-tight md:text-6xl">
-            ¿Listo para transformar la{" "}
-            <span className="text-gradient-brand">administración de tu municipio?</span>
-          </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-ink-soft">
-            Agendá una demostración con nuestro equipo y descubrí cómo
-            implementar la plataforma en tu gestión.
-          </p>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-            <a
-              href="mailto:hola@paralelo.tech?subject=Demo%20Municipio%20Modular"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-brand px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-[1.02]"
-            >
-              <CalendarCheck className="h-4 w-4" />
-              Agendar demostración
-            </a>
-            <a
-              href="#"
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-7 py-3.5 text-sm font-semibold text-foreground shadow-sm hover:bg-surface-2"
-            >
-              <Download className="h-4 w-4" />
-              Descargar presentación
-            </a>
-          </div>
-
-          <div className="mx-auto mt-12 flex max-w-md flex-col items-center gap-3 text-sm text-ink-soft sm:flex-row sm:justify-center sm:gap-8">
-            <a href="mailto:hola@paralelo.tech" className="inline-flex items-center gap-2 hover:text-foreground">
-              <Mail className="h-4 w-4 text-primary" /> hola@paralelo.tech
-            </a>
-            <a href="#" className="inline-flex items-center gap-2 hover:text-foreground">
-              <Phone className="h-4 w-4 text-cyan" /> Contacto comercial
-            </a>
           </div>
         </div>
       </section>
