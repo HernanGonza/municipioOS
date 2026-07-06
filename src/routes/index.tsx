@@ -21,6 +21,16 @@ import {
   Lock,
   Server,
   Cloud,
+  RefreshCw,
+  LifeBuoy,
+  Puzzle,
+  Smartphone,
+  Settings,
+  MessageCircle,
+  Link2,
+  MapPin,
+  Vote,
+  Camera,
 } from "lucide-react";
 import heroImage from "@/assets/hero-modular.jpg";
 import paraleloLogo from "@/assets/paralelo-logo.png";
@@ -96,9 +106,42 @@ const modules = [
     desc: "Infraestructura, reportes de baches, alumbrado, agua y servicios urbanos en tiempo real.",
   },
   {
+    icon: MapPin,
+    name: "Obras Públicas & Territorio",
+    desc: "Registro georreferenciado de obras y servicios ejecutados, con fotos antes/después y estados de verificación, para demostrar presencia territorial con datos concretos.",
+  },
+  {
+    icon: Vote,
+    name: "Presupuesto Participativo",
+    desc: "Los vecinos proponen, votan y priorizan proyectos para su barrio, con seguimiento público del estado de cada iniciativa.",
+  },
+  {
     icon: Megaphone,
     name: "Comunicación & Transparencia",
-    desc: "Portal de transparencia, boletines oficiales, información municipal y archivo histórico digital.",
+    desc: "Portal de transparencia, boletines oficiales, información municipal y archivo histórico digital, con indicadores de gestión listos para exportar.",
+  },
+];
+
+const includedServices = [
+  {
+    icon: GraduationCap,
+    name: "Capacitación & Onboarding",
+    desc: "Entrenamiento completo de equipos y adaptación de workflows en cada módulo.",
+  },
+  {
+    icon: RefreshCw,
+    name: "Migración e Integración de Datos",
+    desc: "Traspaso de la información existente del municipio, sin duplicar cargas ni perder historial.",
+  },
+  {
+    icon: Settings,
+    name: "Configuración Inicial",
+    desc: "Puesta en marcha de la plataforma y los módulos contratados, lista para empezar a operar.",
+  },
+  {
+    icon: MessageCircle,
+    name: "Soporte Técnico Estándar",
+    desc: "Canal de soporte para consultas y resolución de incidentes durante toda la suscripción.",
   },
 ];
 
@@ -107,13 +150,31 @@ const addons = [
     icon: Globe,
     name: "Rediseño Web Municipal",
     desc: "Sitio web municipal moderno, integrado con la plataforma, adaptativo y optimizado para ciudadanos y buscadores.",
-    cta: "Solicitar propuesta",
   },
   {
-    icon: GraduationCap,
-    name: "Capacitación & Onboarding",
-    desc: "Entrenamiento completo de equipos, adaptación de workflows y soporte especializado en cada módulo.",
-    cta: "Más información",
+    icon: LifeBuoy,
+    name: "Mesa de Ayuda & Soporte Prioritario",
+    desc: "Canal de soporte dedicado con tiempos de respuesta garantizados para incidentes críticos de la gestión municipal.",
+  },
+  {
+    icon: Puzzle,
+    name: "Desarrollo de Módulos a Medida",
+    desc: "Si tu municipio necesita una funcionalidad que no está en el catálogo, la diseñamos e integramos como un módulo más de la plataforma.",
+  },
+  {
+    icon: Server,
+    name: "Implementación de Gobernanza de Datos",
+    desc: "Configuramos la infraestructura para que tu municipio aloje su propia base de datos, cumpliendo requisitos normativos o de política interna.",
+  },
+  {
+    icon: Link2,
+    name: "Integraciones con Sistemas de Terceros",
+    desc: "Conectamos la plataforma con pasarelas de pago, organismos provinciales o nacionales, y otros sistemas que ya use el municipio.",
+  },
+  {
+    icon: Megaphone,
+    name: "Comunicación Estratégica (Enfoque)",
+    desc: "Enfoque Misiones diseña y ejecuta la estrategia de comunicación a partir de los datos de gestión de la plataforma: contenido para redes sociales, campañas de difusión y notas de prensa.",
   },
 ];
 
@@ -137,6 +198,7 @@ function Index() {
             <a href="#alianza" className="hover:text-foreground">Alianza</a>
             <a href="#plataforma" className="hover:text-foreground">Plataforma</a>
             <a href="#modulos" className="hover:text-foreground">Módulos</a>
+            <a href="#movil" className="hover:text-foreground">Móvil</a>
             <a href="#gobernanza" className="hover:text-foreground">Datos</a>
             <a href="#servicios" className="hover:text-foreground">Servicios</a>
           </nav>
@@ -272,7 +334,10 @@ function Index() {
                 <p className="mt-6 border-t border-border pt-6 text-sm leading-relaxed text-ink-soft">
                   Paralelo y Enfoque Misiones integran plataforma, comunicación
                   y estrategia para que la gestión municipal sea visible,
-                  participativa y sostenible desde el primer mes.
+                  participativa y sostenible desde el primer mes. La
+                  plataforma genera los indicadores y datos de gestión;
+                  Enfoque los convierte en contenido, campañas y comunicación
+                  institucional.
                 </p>
               </div>
             </div>
@@ -551,6 +616,38 @@ function Index() {
                   </>
                 )}
 
+                {selectedModule === "Obras Públicas & Territorio" && (
+                  <>
+                    <p className="font-semibold text-foreground text-base">
+                      Registro y verificación territorial de obras y servicios
+                    </p>
+                    <ul className="space-y-2 ml-4">
+                      <li>• Registro georreferenciado de obras ejecutadas, en ejecución y servicios realizados</li>
+                      <li>• Fotografías antes y después de cada intervención</li>
+                      <li>• Estados de seguimiento: pendiente, en proceso, finalizada, verificada</li>
+                      <li>• Historial completo por barrio, con responsables y tiempos de ejecución</li>
+                      <li>• Módulo específico para intervenciones de cercanía (iluminación, poda, veredas, plazas)</li>
+                      <li>• Indicadores de cumplimiento y mapas de calor de intervenciones por zona</li>
+                    </ul>
+                  </>
+                )}
+
+                {selectedModule === "Presupuesto Participativo" && (
+                  <>
+                    <p className="font-semibold text-foreground text-base">
+                      Participación ciudadana en la priorización de proyectos barriales
+                    </p>
+                    <ul className="space-y-2 ml-4">
+                      <li>• Presentación de proyectos por parte de vecinos o del municipio</li>
+                      <li>• Votación y priorización ciudadana de iniciativas</li>
+                      <li>• Seguimiento público del estado de cada proyecto</li>
+                      <li>• Categorización por barrio y tipo de intervención</li>
+                      <li>• Integración con el panel de gestión municipal para su ejecución</li>
+                      <li>• Estadísticas de participación por barrio</li>
+                    </ul>
+                  </>
+                )}
+
                 {selectedModule === "Comunicación & Transparencia" && (
                   <>
                     <p className="font-semibold text-foreground text-base">
@@ -563,7 +660,17 @@ function Index() {
                       <li>• Publicación de actas y resoluciones</li>
                       <li>• Calendario de eventos y convocatorias públicas</li>
                       <li>• Acceso a información mediante solicitudes formales</li>
+                      <li>• Indicadores y reportes de gestión listos para exportar</li>
                     </ul>
+                    <div className="mt-6 p-4 rounded-lg border border-cyan/20 bg-cyan/5">
+                      <p className="text-xs font-semibold text-cyan uppercase mb-2">A tener en cuenta</p>
+                      <p>
+                        El módulo entrega los datos e indicadores de la gestión, listos para
+                        comunicar. La elaboración del contenido en sí (piezas para redes,
+                        campañas, notas de prensa) la realiza Enfoque Misiones como servicio
+                        aparte — ver "Con costo adicional".
+                      </p>
+                    </div>
                   </>
                 )}
               </div>
@@ -587,6 +694,68 @@ function Index() {
           </div>
         </div>
       )}
+
+      {/* MÓVIL */}
+      <section id="movil" className="border-t border-border bg-surface-2 py-24">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-[0.18em] text-cyan">
+                Aplicaciones móviles
+              </span>
+              <h2 className="mt-3 font-display text-4xl font-extrabold leading-tight md:text-5xl">
+                Cada módulo puede vivir{" "}
+                <span className="text-gradient-brand">también en el bolsillo</span>
+              </h2>
+              <p className="mt-6 text-lg leading-relaxed text-ink-soft">
+                La gestión municipal no siempre pasa por un escritorio. El
+                vecino reporta desde la vereda, la cuadrilla carga evidencia
+                de una obra recién terminada, el referente territorial releva
+                una necesidad en el momento — la plataforma tiene que estar
+                ahí, no esperar a que alguien vuelva a la oficina.
+              </p>
+              <p className="mt-4 text-lg leading-relaxed text-ink-soft">
+                Por eso cada módulo puede tener su propia aplicación móvil
+                nativa, pensada para el uso real en el territorio, no como
+                una versión reducida de la pantalla de escritorio.
+              </p>
+            </div>
+
+            <div className="grid gap-4">
+              {[
+                {
+                  icon: Smartphone,
+                  title: "Participación Ciudadana",
+                  desc: "El vecino reporta y hace seguimiento desde su celular, sin pasar por el navegador.",
+                },
+                {
+                  icon: Camera,
+                  title: "Obras Públicas & Territorio",
+                  desc: "Las cuadrillas cargan fotos y actualizan el estado de una intervención in situ.",
+                },
+                {
+                  icon: Wrench,
+                  title: "Servicios Públicos & Mantenimiento",
+                  desc: "El personal de campo recibe y cierra órdenes de trabajo desde el lugar.",
+                },
+              ].map((e) => (
+                <div
+                  key={e.title}
+                  className="flex items-start gap-4 rounded-2xl border border-border bg-surface p-6 shadow-card"
+                >
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gradient-brand text-primary-foreground shadow-glow">
+                    <e.icon className="h-5 w-5" />
+                  </span>
+                  <div>
+                    <h3 className="font-display text-base font-bold">{e.title}</h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{e.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* GOBERNANZA DE DATOS */}
       <section id="gobernanza" className="border-t border-border bg-gradient-hero py-24">
@@ -662,44 +831,70 @@ function Index() {
             </p>
           </div>
 
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 max-w-3xl">
-            {addons.map((a) => (
-              <article
-                key={a.name}
-                className="group relative overflow-hidden rounded-2xl border border-border bg-surface-2 p-7 transition-all hover:-translate-y-1 hover:shadow-card-hover"
-              >
-                <div className="absolute right-0 top-0 h-24 w-24 -translate-y-12 translate-x-12 rounded-full bg-gradient-brand opacity-10 blur-2xl transition-opacity group-hover:opacity-25" />
-                <span className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-cyan">
-                  <Sparkles className="h-3 w-3" /> Add-on
-                </span>
-                <span className="mt-4 grid h-12 w-12 place-items-center rounded-xl border border-border bg-surface text-primary">
-                  <a.icon className="h-5 w-5" />
-                </span>
-                <h3 className="mt-5 font-display text-xl font-bold">{a.name}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-ink-soft">{a.desc}</p>
-                <a
-                  href="mailto:hola@paralelo.tech"
-                  className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-foreground transition-transform group-hover:translate-x-0.5"
+          {/* INCLUIDO EN LA SUSCRIPCIÓN */}
+          <div className="mt-14">
+            <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-cyan">
+              <CheckCircle2 className="h-3.5 w-3.5" /> Incluido en tu suscripción
+            </span>
+            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {includedServices.map((s) => (
+                <div
+                  key={s.name}
+                  className="rounded-2xl border border-border bg-background p-6"
                 >
-                  {a.cta}
-                  <ArrowRight className="h-4 w-4" />
-                </a>
-              </article>
-            ))}
+                  <span className="grid h-10 w-10 place-items-center rounded-lg bg-cyan/10 text-cyan">
+                    <s.icon className="h-4 w-4" />
+                  </span>
+                  <h3 className="mt-4 font-display text-base font-bold">{s.name}</h3>
+                  <p className="mt-2 text-xs leading-relaxed text-ink-soft">{s.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* CON COSTO ADICIONAL */}
+          <div className="mt-16">
+            <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-primary">
+              <Sparkles className="h-3.5 w-3.5" /> Con costo adicional
+            </span>
+            <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {addons.map((a) => (
+                <article
+                  key={a.name}
+                  className="group relative overflow-hidden rounded-2xl border border-border bg-surface-2 p-7 transition-all hover:-translate-y-1 hover:shadow-card-hover"
+                >
+                  <div className="absolute right-0 top-0 h-24 w-24 -translate-y-12 translate-x-12 rounded-full bg-gradient-brand opacity-10 blur-2xl transition-opacity group-hover:opacity-25" />
+                  <span className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-primary">
+                    <Sparkles className="h-3 w-3" /> Add-on
+                  </span>
+                  <span className="mt-4 grid h-12 w-12 place-items-center rounded-xl border border-border bg-surface text-primary">
+                    <a.icon className="h-5 w-5" />
+                  </span>
+                  <h3 className="mt-5 font-display text-xl font-bold">{a.name}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-ink-soft">{a.desc}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* FOOTER */}
       <footer className="border-t border-border bg-surface py-10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 text-sm text-ink-soft sm:flex-row">
-          <div className="flex items-center gap-2 font-display font-bold">
-            <span className="grid h-7 w-7 place-items-center rounded-lg bg-gradient-brand text-primary-foreground">
-              <Blocks className="h-3.5 w-3.5" />
-            </span>
-            MunicipioOS · por Paralelo
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 text-sm text-ink-soft sm:flex-row">
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <div className="flex items-center gap-2 font-display font-bold">
+              <span className="grid h-7 w-7 place-items-center rounded-lg bg-gradient-brand text-primary-foreground">
+                <Blocks className="h-3.5 w-3.5" />
+              </span>
+              MunicipioOS · por Paralelo
+            </div>
+            <div className="h-5 w-px bg-border" />
+            <a href="https://enfoquemisiones.com/" target="_blank" rel="noopener noreferrer">
+              <img src={enfoqueLogo} alt="Enfoque Misiones" className="h-5 object-contain opacity-80 transition-opacity hover:opacity-100" />
+            </a>
           </div>
-          <p>© {new Date().getFullYear()} Paralelo. Todos los derechos reservados.</p>
+          <p>© {new Date().getFullYear()} Paralelo × Enfoque Misiones. Todos los derechos reservados.</p>
         </div>
       </footer>
     </div>
