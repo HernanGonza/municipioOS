@@ -18,8 +18,13 @@ import {
   Sparkles,
   GraduationCap,
   CheckCircle2,
+  Lock,
+  Server,
+  Cloud,
 } from "lucide-react";
 import heroImage from "@/assets/hero-modular.jpg";
+import paraleloLogo from "@/assets/paralelo-logo.png";
+import enfoqueLogo from "@/assets/enfoque-logo.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -69,37 +74,31 @@ const modules = [
     name: "Participación Ciudadana",
     desc: "Canales directos entre gobierno y ciudadanos: consultas, peticiones, encuestas y participación comunitaria integrada.",
     featured: true,
-    status: "Disponible",
   },
   {
     icon: Leaf,
     name: "Gestión Ambiental & Sostenibilidad",
     desc: "Monitoreo ambiental, gestión de residuos, proyectos ecológicos y reportes de sostenibilidad municipal.",
-    status: "Disponible",
   },
   {
     icon: FileCheck2,
     name: "Licencias y Permisos",
     desc: "Solicitud, seguimiento y aprobación de licencias municipales completamente digitalizadas.",
-    status: "Disponible",
   },
   {
     icon: Coins,
     name: "Gestión Tributaria & Tesorería",
     desc: "Recaudación, catastro digital, facturación electrónica y seguimiento de impuestos municipales.",
-    status: "Disponible",
   },
   {
     icon: Wrench,
     name: "Servicios Públicos & Mantenimiento",
     desc: "Infraestructura, reportes de baches, alumbrado, agua y servicios urbanos en tiempo real.",
-    status: "Disponible",
   },
   {
     icon: Megaphone,
     name: "Comunicación & Transparencia",
     desc: "Portal de transparencia, boletines oficiales, información municipal y archivo histórico digital.",
-    status: "Disponible",
   },
 ];
 
@@ -109,12 +108,6 @@ const addons = [
     name: "Rediseño Web Municipal",
     desc: "Sitio web municipal moderno, integrado con la plataforma, adaptativo y optimizado para ciudadanos y buscadores.",
     cta: "Solicitar propuesta",
-  },
-  {
-    icon: Sparkles,
-    name: "Landing Page del Programa",
-    desc: "Página de presentación profesional para promocionar tu municipio y los servicios disponibles para vecinos.",
-    cta: "Ver ejemplo",
   },
   {
     icon: GraduationCap,
@@ -141,8 +134,10 @@ function Index() {
             </span>
           </a>
           <nav className="hidden items-center gap-8 text-sm font-medium text-ink-soft md:flex">
+            <a href="#alianza" className="hover:text-foreground">Alianza</a>
             <a href="#plataforma" className="hover:text-foreground">Plataforma</a>
             <a href="#modulos" className="hover:text-foreground">Módulos</a>
+            <a href="#gobernanza" className="hover:text-foreground">Datos</a>
             <a href="#servicios" className="hover:text-foreground">Servicios</a>
           </nav>
         </div>
@@ -206,6 +201,80 @@ function Index() {
                 height={1024}
                 className="h-full w-full object-cover"
               />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ALIANZA ESTRATÉGICA */}
+      <section id="alianza" className="border-t border-border bg-surface py-24">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="max-w-2xl">
+            <span className="text-xs font-bold uppercase tracking-[0.18em] text-primary">
+              Alianza estratégica
+            </span>
+            <h2 className="mt-3 font-display text-4xl font-extrabold leading-tight md:text-5xl">
+              Tecnología <span className="text-gradient-brand">+</span> Comunicación{" "}
+              <span className="text-gradient-brand">+</span> Estrategia
+            </h2>
+          </div>
+
+          <div className="mt-12 grid gap-5 md:grid-cols-2">
+            <div className="rounded-2xl border border-border bg-surface-2 p-8 shadow-card">
+              <div className="flex items-center justify-between gap-4">
+                <img src={paraleloLogo} alt="Paralelo" className="h-10 object-contain" />
+                <span className="text-xs font-semibold uppercase tracking-widest text-ink-soft">
+                  Tecnología
+                </span>
+              </div>
+              <p className="mt-6 text-sm leading-relaxed text-ink-soft">
+                Diseño y evolución de la plataforma de gestión municipal.
+                Módulos, actualizaciones y soporte centralizado para cada
+                municipio.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-border bg-surface-2 p-8 shadow-card">
+              <div className="flex items-center justify-between gap-4">
+                <img src={enfoqueLogo} alt="Enfoque Misiones" className="h-8 object-contain" />
+                <span className="text-xs font-semibold uppercase tracking-widest text-ink-soft">
+                  Comunicación
+                </span>
+              </div>
+              <p className="mt-6 text-sm leading-relaxed text-ink-soft">
+                Comunicación estratégica y posicionamiento institucional.
+                Convierte la gestión municipal en contenido, participación y
+                visibilidad real.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-8 rounded-2xl border border-border bg-surface-2 p-8 md:p-10">
+            <div className="flex items-start gap-4">
+              <Sparkles className="mt-1 h-5 w-5 shrink-0 text-cyan" />
+              <div>
+                <h3 className="font-display text-xl font-bold">
+                  ¿Por qué esta alianza es clave?
+                </h3>
+                <div className="mt-5 grid gap-3 md:grid-cols-2">
+                  {[
+                    "La plataforma no queda como herramienta interna",
+                    "Se transforma en contenido comunicable",
+                    "Aumenta la participación ciudadana",
+                    "Potencia la visibilidad de la gestión municipal",
+                  ].map((b) => (
+                    <div key={b} className="flex items-start gap-2 text-sm text-ink-soft">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-cyan" />
+                      <span>{b}</span>
+                    </div>
+                  ))}
+                </div>
+                <p className="mt-6 border-t border-border pt-6 text-sm leading-relaxed text-ink-soft">
+                  Paralelo y Enfoque Misiones integran plataforma, comunicación
+                  y estrategia para que la gestión municipal sea visible,
+                  participativa y sostenible desde el primer mes.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -519,6 +588,64 @@ function Index() {
         </div>
       )}
 
+      {/* GOBERNANZA DE DATOS */}
+      <section id="gobernanza" className="border-t border-border bg-gradient-hero py-24">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="max-w-2xl">
+            <span className="text-xs font-bold uppercase tracking-[0.18em] text-cyan">
+              Gobernanza de datos
+            </span>
+            <h2 className="mt-3 font-display text-4xl font-extrabold leading-tight md:text-5xl">
+              Tus datos,{" "}
+              <span className="text-gradient-brand">tus reglas</span>
+            </h2>
+            <p className="mt-5 text-lg text-ink-soft">
+              Sabemos que la información municipal es sensible. Por eso la
+              plataforma está pensada para que cada municipio decida dónde y
+              cómo se resguardan sus datos, sin resignar ninguna
+              funcionalidad.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-5 md:grid-cols-2">
+            <div className="rounded-2xl border border-border bg-surface p-8 shadow-card">
+              <span className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-brand text-primary-foreground shadow-glow">
+                <Cloud className="h-5 w-5" />
+              </span>
+              <h3 className="mt-6 font-display text-xl font-bold">
+                Alojado por Paralelo
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-ink-soft">
+                Nosotros gestionamos la infraestructura de punta a punta:
+                mantenimiento, actualizaciones y respaldos incluidos. La
+                opción más simple para arrancar rápido.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-border bg-surface p-8 shadow-card">
+              <span className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-brand text-primary-foreground shadow-glow">
+                <Server className="h-5 w-5" />
+              </span>
+              <h3 className="mt-6 font-display text-xl font-bold">
+                Gobernanza propia
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-ink-soft">
+                Si tu municipio necesita resguardar la información en su
+                propia infraestructura por motivos normativos o de política
+                interna, lo hacemos posible sin perder ninguna funcionalidad
+                de la plataforma.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-8 flex items-center gap-2 rounded-xl border border-border bg-surface/60 px-5 py-4 text-sm text-ink-soft">
+            <Lock className="h-4 w-4 shrink-0 text-cyan" />
+            Misma plataforma, mismas funcionalidades — sin importar dónde
+            vivan los datos.
+          </div>
+        </div>
+      </section>
+
       {/* SERVICIOS COMPLEMENTARIOS */}
       <section id="servicios" className="border-t border-border bg-surface py-24">
         <div className="mx-auto max-w-7xl px-6">
@@ -535,7 +662,7 @@ function Index() {
             </p>
           </div>
 
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 max-w-3xl">
             {addons.map((a) => (
               <article
                 key={a.name}
