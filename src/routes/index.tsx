@@ -31,6 +31,8 @@ import {
   MapPin,
   Vote,
   Camera,
+  Menu,
+  X,
 } from "lucide-react";
 import heroImage from "@/assets/hero-modular.jpg";
 import paraleloLogo from "@/assets/paralelo-logo.png";
@@ -180,6 +182,7 @@ const addons = [
 
 function Index() {
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -202,7 +205,38 @@ function Index() {
             <a href="#gobernanza" className="hover:text-foreground">Datos</a>
             <a href="#servicios" className="hover:text-foreground">Servicios</a>
           </nav>
+          <button
+            onClick={() => setMobileMenuOpen((v) => !v)}
+            className="grid h-9 w-9 place-items-center rounded-lg border border-border bg-surface text-foreground md:hidden"
+            aria-label="Abrir menú"
+            aria-expanded={mobileMenuOpen}
+          >
+            {mobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+          </button>
         </div>
+        {mobileMenuOpen && (
+          <nav className="border-t border-border bg-background px-6 py-4 md:hidden">
+            <div className="flex flex-col gap-1 text-sm font-medium text-ink-soft">
+              {[
+                { href: "#alianza", label: "Alianza" },
+                { href: "#plataforma", label: "Plataforma" },
+                { href: "#modulos", label: "Módulos" },
+                { href: "#movil", label: "Móvil" },
+                { href: "#gobernanza", label: "Datos" },
+                { href: "#servicios", label: "Servicios" },
+              ].map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="rounded-lg px-2 py-2.5 hover:bg-surface-2 hover:text-foreground"
+                >
+                  {l.label}
+                </a>
+              ))}
+            </div>
+          </nav>
+        )}
       </header>
 
       {/* HERO */}
@@ -485,7 +519,7 @@ function Index() {
             className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-3xl border border-border bg-surface shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="p-8">
+            <div className="p-6 sm:p-8">
               {/* Header del Modal */}
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
