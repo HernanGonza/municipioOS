@@ -247,7 +247,7 @@ function Index() {
               <span className="h-1.5 w-1.5 rounded-full bg-primary" />
               Plataforma modular para gobiernos locales
             </div>
-            <h1 className="mt-6 text-balance font-display text-5xl font-extrabold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl">
+            <h1 className="mt-6 text-balance break-words font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
               Administración{" "}
               <span className="text-gradient-brand">Municipal Modular</span>
             </h1>
