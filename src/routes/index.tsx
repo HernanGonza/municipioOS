@@ -185,7 +185,7 @@ function Index() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
       {/* NAV */}
       <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
@@ -242,7 +242,7 @@ function Index() {
       {/* HERO */}
       <section id="top" className="relative overflow-hidden bg-gradient-hero">
         <div className="mx-auto grid max-w-7xl gap-12 px-6 pb-24 pt-16 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-8 lg:pt-24">
-          <div>
+          <div className="min-w-0">
             <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-xs font-semibold text-ink-soft shadow-sm">
               <span className="h-1.5 w-1.5 rounded-full bg-primary" />
               Plataforma modular para gobiernos locales
@@ -287,8 +287,8 @@ function Index() {
             </dl>
           </div>
 
-          <div className="relative">
-            <div className="absolute -inset-8 -z-10 rounded-[3rem] bg-gradient-brand opacity-20 blur-3xl" />
+          <div className="relative min-w-0">
+            <div className="absolute inset-0 -z-10 rounded-[3rem] bg-gradient-brand opacity-20 blur-3xl" />
             <div className="overflow-hidden rounded-3xl border border-border bg-surface shadow-card-hover">
               <img
                 src={heroImage}
@@ -317,8 +317,8 @@ function Index() {
 
           <div className="mt-12 grid gap-5 md:grid-cols-2">
             <div className="rounded-2xl border border-border bg-surface-2 p-8 shadow-card">
-              <div className="flex items-center justify-between gap-4">
-                <img src={paraleloLogo} alt="Paralelo" className="h-10 object-contain" />
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <img src={paraleloLogo} alt="Paralelo" className="h-10 w-auto max-w-[140px] object-contain" />
                 <span className="text-xs font-semibold uppercase tracking-widest text-ink-soft">
                   Tecnología
                 </span>
@@ -331,8 +331,8 @@ function Index() {
             </div>
 
             <div className="rounded-2xl border border-border bg-surface-2 p-8 shadow-card">
-              <div className="flex items-center justify-between gap-4">
-                <img src={enfoqueLogo} alt="Enfoque Misiones" className="h-8 object-contain" />
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <img src={enfoqueLogo} alt="Enfoque Misiones" className="h-auto w-28 max-w-[140px] object-contain" />
                 <span className="text-xs font-semibold uppercase tracking-widest text-ink-soft">
                   Comunicación
                 </span>
@@ -925,7 +925,7 @@ function Index() {
             </div>
             <div className="h-5 w-px bg-border" />
             <a href="https://enfoquemisiones.com/" target="_blank" rel="noopener noreferrer">
-              <img src={enfoqueLogo} alt="Enfoque Misiones" className="h-5 object-contain opacity-80 transition-opacity hover:opacity-100" />
+              <img src={enfoqueLogo} alt="Enfoque Misiones" className="h-auto w-24 object-contain opacity-80 transition-opacity hover:opacity-100" />
             </a>
           </div>
           <p>© {new Date().getFullYear()} Paralelo × Enfoque Misiones. Todos los derechos reservados.</p>
