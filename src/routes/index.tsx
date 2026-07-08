@@ -472,7 +472,7 @@ function Index() {
                     transition={{ delay: idx * 0.1 }}
                     className="flex gap-3"
                   >
-                    <div className="p-2 rounded-lg bg-gradient-brand/10 text-gradient-brand shrink-0">
+                    <div className="p-2 rounded-lg bg-foreground/10 text-foreground shrink-0">
                       <item.icon className="h-5 w-5" />
                     </div>
                     <div>
@@ -1260,9 +1260,7 @@ function Index() {
               className="text-center"
             >
               <div className="flex justify-center mb-6">
-                <div className="h-16 w-16 rounded-2xl bg-gradient-brand/10 text-gradient-brand flex items-center justify-center">
-                  <Blocks className="h-8 w-8" />
-                </div>
+                <img src={paraleloLogo} alt="Paralelo" className="h-12 w-auto object-contain" />
               </div>
               <h3 className="font-display text-xl font-bold mb-3">Paralelo</h3>
               <p className="text-sm text-ink-soft">
@@ -1282,9 +1280,7 @@ function Index() {
               className="text-center"
             >
               <div className="flex justify-center mb-6">
-                <div className="h-16 w-16 rounded-2xl bg-cyan/10 text-cyan flex items-center justify-center">
-                  <Megaphone className="h-8 w-8" />
-                </div>
+                <img src={enfoqueLogo} alt="Enfoque Misiones" className="h-12 w-auto object-contain" />
               </div>
               <h3 className="font-display text-xl font-bold mb-3">Enfoque Misiones</h3>
               <p className="text-sm text-ink-soft">
