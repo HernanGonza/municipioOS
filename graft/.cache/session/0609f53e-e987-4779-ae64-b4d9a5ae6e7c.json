@@ -1,0 +1,13 @@
+{
+  "lastQuery": "a la de puerto rico sacale esto\n\nDesplazá para descubrir la propuesta\n\n\nse pasa por encima de lo otro y no esta bien",
+  "perAgentQuery": {},
+  "graftReads": 0,
+  "sourceReads": 1,
+  "savedTokens": 0,
+  "injectedPointers": [],
+  "nudges": 0,
+  "host": "claude-code",
+  "inputCostMicros": 661553,
+  "inputTokensBilled": 2921666,
+  "lastBillingUuid": "2ca94435-f66b-45c0-a5ec-fe9e16a58702"
+}

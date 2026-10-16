@@ -77,14 +77,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Administración Municipal Modular | Paralelo" },
+      { name: "theme-color", content: "#27500A" },
+      { title: "Administración Municipal Modular | Tacuara" },
       {
         name: "description",
         content:
           "Plataforma modular de gestión municipal. Sistema base con módulos acoplables: participación ciudadana, tributaria, licencias, ambiental y más. Suscripción mensual por módulo.",
       },
-      { name: "author", content: "Paralelo" },
-      { property: "og:title", content: "Administración Municipal Modular | Paralelo" },
+      { name: "author", content: "Tacuara" },
+      { property: "og:title", content: "Administración Municipal Modular | Tacuara" },
       {
         property: "og:description",
         content:
@@ -95,11 +96,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      { rel: "icon", href: "/favicon.ico", sizes: "any" },
+      { rel: "icon", type: "image/png", sizes: "48x48", href: "/favicon-48.png" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
       {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap",
+        rel: "preload",
+        href: "/fonts/inter-tight-latin.woff2",
+        as: "font",
+        type: "font/woff2",
+        crossOrigin: "anonymous",
       },
     ],
   }),
@@ -111,7 +116,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="es-AR">
       <head>
         <HeadContent />
       </head>

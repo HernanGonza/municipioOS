@@ -3,7 +3,6 @@ import { useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
   ArrowRight,
-  Blocks,
   LayoutDashboard,
   Database,
   ShieldCheck,
@@ -45,14 +44,13 @@ import {
   Lightbulb,
   Target,
 } from "lucide-react";
+import { TacuaraFooter } from "@/components/TacuaraFooter";
 import heroImage from "@/assets/hero-modular.jpg";
-import paraleloLogo from "@/assets/paralelo-logo.png";
-import enfoqueLogo from "@/assets/enfoque-logo.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Administración Municipal Modular | Paralelo" },
+      { title: "Administración Municipal Modular | Tacuara" },
       {
         name: "description",
         content:
@@ -193,8 +191,8 @@ const addons = [
   },
   {
     icon: Megaphone,
-    name: "Comunicación Estratégica (Enfoque)",
-    desc: "Enfoque Misiones diseña y ejecuta la estrategia de comunicación a partir de los datos de gestión.",
+    name: "Comunicación Estratégica",
+    desc: "Tacuara diseña y ejecuta la estrategia de comunicación a partir de los datos de gestión.",
   },
 ];
 
@@ -385,12 +383,19 @@ function Index() {
       {/* NAV */}
       <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-          <a href="#top" className="flex items-center gap-2 font-display text-lg font-extrabold">
-            <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-brand text-primary-foreground shadow-glow">
-              <Blocks className="h-4 w-4" />
+          <a href="#top" className="flex items-center gap-3">
+            <img
+              src="/tacuara-mark-bn-96.webp"
+              alt=""
+              width={40}
+              height={40}
+              className="h-9 w-9 rounded-md border border-border object-cover"
+            />
+            <span className="text-2xl font-extrabold lowercase leading-none tracking-[-0.03em] text-primary">
+              tacuara
             </span>
-            <span>
-              Municipio<span className="text-gradient-brand">OS</span>
+            <span className="hidden border-l border-dashed border-border pl-3 font-mono text-[0.75rem] uppercase leading-[1.3] tracking-[0.04em] text-muted-foreground sm:block">
+              MunicipioOS
             </span>
           </a>
           <nav className="hidden items-center gap-8 text-sm font-medium text-ink-soft md:flex">
@@ -877,7 +882,7 @@ function Index() {
                   Cerrar
                 </button>
                 <a
-                  href="mailto:hola@paralelo.tech"
+                  href="mailto:hola@tacuara.com.ar"
                   className="flex-1 rounded-full bg-gradient-brand px-4 py-3 font-semibold text-primary-foreground hover:scale-[1.02] transition-transform text-center"
                 >
                   Consultar
@@ -1157,7 +1162,7 @@ function Index() {
                 <Cloud className="h-5 w-5" />
               </span>
               <h3 className="mt-6 font-display text-xl font-bold">
-                Alojado por Paralelo
+                Alojado por Tacuara
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-ink-soft">
                 Nosotros gestionamos todo: infraestructura, mantenimiento, respaldos y actualizaciones.
@@ -1244,52 +1249,31 @@ function Index() {
         </div>
       </section>
 
-      {/* ALIANZA - PREMIUM AL FINAL */}
-      <section className="border-t border-border bg-surface-2 py-24">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="font-display text-4xl font-extrabold">
-              Respaldado por <span className="text-gradient-brand">expertos</span>
+      {/* TACUARA */}
+      <section className="border-t border-dashed border-border bg-surface-2 py-24">
+        <div className="mx-auto max-w-4xl px-6 text-center">
+          <motion.div {...fadeUp} className="flex flex-col items-center">
+            <img
+              src="/tacuara-mark-bn-96.webp"
+              alt=""
+              width={64}
+              height={64}
+              className="h-16 w-16 rounded-md border border-border object-cover"
+            />
+            <p className="mt-6 font-mono text-xs font-medium uppercase tracking-[0.06em] text-cyan">
+              Quién está detrás
+            </p>
+            <h2 className="mt-3 font-display text-4xl font-extrabold">
+              Una propuesta de <span className="text-primary">Tacuara</span>
             </h2>
-          </div>
+            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink-soft">
+              Diseñamos, implementamos y acompañamos plataformas digitales para gobiernos locales:
+              arquitectura sólida, módulos que crecen con tu municipio, soporte técnico de primer
+              nivel y comunicación estratégica a partir de los datos de gestión.
+            </p>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 items-center">
-            {/* Paralelo */}
-            <motion.div
-              {...fadeUp}
-              className="text-center"
-            >
-              <div className="flex justify-center mb-6">
-                <img src={paraleloLogo} alt="Paralelo" className="h-12 w-auto object-contain" />
-              </div>
-              <h3 className="font-display text-xl font-bold mb-3">Paralelo</h3>
-              <p className="text-sm text-ink-soft">
-                Diseño y evolución del ecosistema. Arquitectura sólida, módulos innovadores, soporte técnico de primer nivel.
-              </p>
-            </motion.div>
-
-            {/* Plus */}
-            <div className="flex justify-center">
-              <div className="font-display text-4xl font-bold text-gradient-brand">+</div>
-            </div>
-
-            {/* Enfoque */}
-            <motion.div
-              {...fadeUp}
-              transition={{ ...fadeUp.transition, delay: 0.1 }}
-              className="text-center"
-            >
-              <div className="flex justify-center mb-6">
-                <img src={enfoqueLogo} alt="Enfoque Misiones" className="h-12 w-auto object-contain" />
-              </div>
-              <h3 className="font-display text-xl font-bold mb-3">Enfoque Misiones</h3>
-              <p className="text-sm text-ink-soft">
-                Comunicación estratégica y contenido. Convierte tu gestión en visibilidad, participación y credibilidad.
-              </p>
-            </motion.div>
-          </div>
-
-          <div className="mt-12 p-8 rounded-2xl border border-border bg-surface text-center">
+          <div className="mt-12 rounded-lg border border-border bg-surface p-8 text-center">
             <p className="text-sm leading-relaxed text-ink-soft">
               <strong>Resultado:</strong> Plataforma técnica sólida + Comunicación estratégica = Municipio moderno, visible, participativo.
             </p>
@@ -1308,7 +1292,7 @@ function Index() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="mailto:hola@paralelo.tech"
+              href="mailto:hola@tacuara.com.ar"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-brand px-8 py-4 text-base font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-[1.02]"
             >
               Solicitar una demostración
@@ -1326,30 +1310,7 @@ function Index() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="border-t border-border bg-surface py-10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 text-sm text-ink-soft sm:flex-row">
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <div className="flex items-center gap-2 font-display font-bold">
-              <span className="grid h-7 w-7 place-items-center rounded-lg bg-gradient-brand text-primary-foreground">
-                <Blocks className="h-3.5 w-3.5" />
-              </span>
-              MunicipioOS · por Paralelo
-            </div>
-            <div className="h-5 w-px bg-border" />
-            <a 
-              href="https://enfoquemisiones.com/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-ink-soft hover:text-foreground transition-colors"
-            >
-              <Megaphone className="h-5 w-5 text-cyan" />
-              <span className="text-xs font-semibold">Enfoque Misiones</span>
-            </a>
-          </div>
-          <p>© {new Date().getFullYear()} Paralelo × Enfoque Misiones. Todos los derechos reservados.</p>
-        </div>
-      </footer>
+      <TacuaraFooter title="MunicipioOS · Administración Municipal Modular" />
     </div>
   );
 }
